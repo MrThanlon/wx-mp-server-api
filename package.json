@@ -1,6 +1,6 @@
 {
   "name": "wx-mp-server-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/",
   "main": "dist/index.js",
   "repository": {

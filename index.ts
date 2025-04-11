@@ -18,20 +18,14 @@ export function createClient(credential: Credential) {
       session_key: string
       unionid: string
       openid: string
-    } | Error> {
-      const res = await getJson<{
+    } & Error> {
+      return await getJson<{
         session_key: string
         unionid: string
         errmsg: string
         openid: string
         errcode: number
       }>("https://api.weixin.qq.com/sns/jscode2session", { ...params, grant_type: "authorization_code" })
-      const { errcode, errmsg } = res
-      if (errcode) {
-        return { errcode, errmsg }
-      } else {
-        return res
-      }
     },
     getUnlimitedQRCode: rawResponse<{
       scene: string
@@ -91,26 +85,18 @@ async function getJson<R>(url: string, params: string[][] | Record<string, strin
   return (await get(url, params)).json()
 }
 
-function jsonResponse<P, R>(credential: Credential, url: string, method: Method) {
+function jsonResponse<P, R>(credential: Credential, url: string, method: Method): (params: P) => Promise<R & Error> {
   if (method === "GET") {
     return async (params: P) => {
       const access_token = await getStableAccessToken(credential)
       const res = await getJson<R & Error>(url, { ...params, access_token })
-      if (res.errcode) {
-        return { errcode: res.errcode, errmsg: res.errmsg }
-      } else {
-        return res
-      }
+      return res
     }
   } else {
     return async (params: P) => {
       const token = await getStableAccessToken(credential)
       const res = await postJson<P, R & Error>(url + `?access_token=${token}`, params)
-      if (res.errcode) {
-        return { errcode: res.errcode, errmsg: res.errmsg }
-      } else {
-        return res
-      }
+      return res
     }
   }
 }
