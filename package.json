@@ -1,0 +1,21 @@
+{
+  "name": "wx-server-api",
+  "version": "1.0.0",
+  "description": "https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrThanlon/wx-server-api"
+  },
+  "homepage": "https://github.com/MrThanlon/wx-server-api",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
