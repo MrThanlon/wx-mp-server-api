@@ -1,13 +1,13 @@
 {
-  "name": "wx-server-api",
+  "name": "wx-mp-server-api",
   "version": "1.0.0",
   "description": "https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MrThanlon/wx-server-api"
+    "url": "git+https://github.com/MrThanlon/wx-mp-server-api.git"
   },
-  "homepage": "https://github.com/MrThanlon/wx-server-api",
-  "main": "dist/index.js",
+  "homepage": "https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/",
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
